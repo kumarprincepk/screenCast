@@ -5,7 +5,8 @@
     "description": "Chrome extension like Loom",
     "permissions": [
         "storage",
-        "activeTab"
+        "activeTab",
+        "downloads"
     ],
     "host_permissions": [
         "<all_urls>"
