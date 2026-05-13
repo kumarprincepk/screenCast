@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Screen Cast",
+    "version": "1.0.0",
+    "description": "Chrome extension like Loom",
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "index.html"
+    }
+}
