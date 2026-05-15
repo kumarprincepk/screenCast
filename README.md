@@ -79,3 +79,9 @@ If you have any questions regarding this Privacy Policy, you may contact the dev
 
 GitHub Repository:
 https://github.com/kumarprincepk/screenCast
+
+Final Privacy Commitment
+
+Screen Cast is built with a strong focus on user privacy, local-first functionality, and transparent permission usage.
+
+Your recordings belong to you — not to the extension.
