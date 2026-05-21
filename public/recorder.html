@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Screen Cast Recorder</title>
+        <link rel="stylesheet" href="recorder.css" />
+    </head>
+    <body>
+        <main class="shell">
+            <section class="panel">
+                <div class="topbar">
+                    <div>
+                        <p class="eyebrow">Screen Cast</p>
+                        <h1>Recorder Studio</h1>
+                    </div>
+                    <div class="status" id="statusPill">
+                        <span></span>
+                        <strong id="statusText">Ready</strong>
+                    </div>
+                </div>
+
+                <div class="stage">
+                    <video id="preview" autoplay muted playsinline></video>
+                    <canvas id="annotationCanvas" class="annotationCanvas"></canvas>
+                    <div class="liveCaption hidden" id="liveCaption"></div>
+                    <div class="empty" id="emptyState">
+                        <div class="emptyIcon">REC</div>
+                        <h2>Choose what you want to capture</h2>
+                        <p>Select an entire screen for recording that continues while you switch tabs or windows.</p>
+                    </div>
+                </div>
+
+                <div class="annotationToolbar" aria-label="Video annotations">
+                    <button class="toolButton active" data-tool="select" type="button">Select</button>
+                    <button class="toolButton" data-tool="arrow" type="button">Arrow</button>
+                    <button class="toolButton" data-tool="rectangle" type="button">Rectangle</button>
+                    <button class="toolButton" data-tool="square" type="button">Square</button>
+                    <button class="toolButton" data-tool="circle" type="button">Circle</button>
+                    <button class="toolButton" data-tool="text" type="button">Text</button>
+                    <input id="annotationColor" class="annotationColor" type="color" value="#ef4444" aria-label="Annotation color" />
+                    <button class="secondary compact" id="undoAnnotationBtn" type="button" disabled>Undo</button>
+                    <button class="secondary compact" id="clearAnnotationsBtn" type="button" disabled>Clear</button>
+                    <button class="secondary compact" id="applyAnnotationsBtn" type="button" disabled>Apply to Video</button>
+                </div>
+
+                <div class="toggles">
+                    <label class="optionToggle" for="cameraToggle">
+                        <input id="cameraToggle" type="checkbox" checked />
+                        <span>Include camera overlay</span>
+                    </label>
+                    <label class="optionToggle" for="captionToggle">
+                        <input id="captionToggle" type="checkbox" checked />
+                        <span>Transcriptions and closed captions</span>
+                    </label>
+                </div>
+
+                <div class="controls">
+                    <button class="primary" id="startBtn">Start Recording</button>
+                    <button class="danger" id="stopBtn" disabled>Stop</button>
+                    <button class="secondary" id="pauseBtn" disabled>Pause</button>
+                    <button class="secondary" id="saveBtn" disabled>Save Again</button>
+                </div>
+
+                <div class="metrics">
+                    <div>
+                        <span>Duration</span>
+                        <strong id="timer">00:00</strong>
+                    </div>
+                    <div>
+                        <span>File</span>
+                        <strong id="fileName">Not recorded yet</strong>
+                    </div>
+                    <div>
+                        <span>Audio</span>
+                        <strong id="audioState">System audio optional</strong>
+                    </div>
+                    <div>
+                        <span>Camera</span>
+                        <strong id="cameraState">Ready</strong>
+                    </div>
+                    <div>
+                        <span>Captions</span>
+                        <strong id="captionState">Ready</strong>
+                    </div>
+                </div>
+
+                <section class="transcriptPanel" aria-label="Transcript">
+                    <div class="transcriptHeader">
+                        <h2>Transcript</h2>
+                        <div class="transcriptActions">
+                            <button class="secondary compact" id="saveTranscriptBtn" disabled>Save TXT</button>
+                            <button class="secondary compact" id="saveCaptionsBtn" disabled>Save VTT</button>
+                        </div>
+                    </div>
+                    <div class="transcriptText emptyTranscript" id="transcriptText">Transcript will appear here during recording.</div>
+                </section>
+
+                <section class="sharePanel disabled" aria-label="Sharing and embedding" id="sharePanel">
+                    <div class="shareHeader">
+                        <h2>Sharing</h2>
+                        <div class="shareActions">
+                            <button class="secondary compact" id="uploadVideoBtn" disabled>Upload Link</button>
+                            <button class="secondary compact" id="shareVideoBtn" disabled>Share File</button>
+                            <button class="secondary compact" id="copyLinkBtn" disabled>Copy Link</button>
+                            <button class="secondary compact" id="copyEmbedBtn" disabled>Copy Embed</button>
+                            <button class="secondary compact" id="copyPackageBtn" disabled>Copy Package</button>
+                        </div>
+                    </div>
+                    <input
+                        id="uploadEndpoint"
+                        class="uploadEndpoint"
+                        type="url"
+                        value="http://localhost:4174/upload"
+                        aria-label="Upload endpoint"
+                    />
+                    <textarea id="embedCode" class="embedCode" readonly placeholder="Embed code will appear after recording."></textarea>
+                </section>
+
+                <p class="message" id="message">Keep this recorder window open while recording.</p>
+            </section>
+        </main>
+
+        <script src="recorder.js"></script>
+    </body>
+</html>
